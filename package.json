@@ -1,0 +1,19 @@
+{
+  "name": "algorithm",
+  "version": "1.0.0",
+  "description": "data structures and algorithms",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watch"
+  },
+  "keywords": [
+    "algorithms",
+    "data-structures"
+  ],
+  "author": "FWHeart",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^24.7.1",
+    "mockjs": "^1.0.1-beta3"
+  }
+}
