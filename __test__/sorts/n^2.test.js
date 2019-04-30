@@ -2,26 +2,16 @@ import {insertSort, selectSort, shellSort} from "../../sorts/n^2";
 import {randInt, repareDatas, tempTest} from "./util";
 
 let datas = [[]];
-/*beforeAll(()=>{
-  let n = 5;
-  while(n-->0){
-    let arr = [];
-    for(let len=Math.pow(10,n),i=0;i<len;i++){
-      arr.push(randInt(len));
-    }
-    datas.push(arr);
-  }
-});*/
 repareDatas(datas);
 
 describe('n^2',()=>{
-  test('select',()=>{
+  test('selectSort',()=>{
     tempTest(selectSort,datas);
   });
-  test('insert',()=>{
+  test('insertSort',()=>{
     tempTest(insertSort,datas);
   });
-  test('shell',()=>{
+  test('shellSort',()=>{
     tempTest(shellSort,datas);
   });
 });
