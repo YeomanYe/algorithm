@@ -22,3 +22,19 @@ export function tempTest(sort,datas) {
 export function randInt(h,l = 0){
   return l + parseInt(( h - l )* Math.random());
 }
+
+/**
+ * 预备数据
+ */
+export function repareDatas(datas) {
+  beforeAll(()=>{
+    let n = 5;
+    while(n-->0){
+      let arr = [];
+      for(let len=Math.pow(10,n),i=0;i<len;i++){
+        arr.push(randInt(len));
+      }
+      datas.push(arr);
+    }
+  });
+}

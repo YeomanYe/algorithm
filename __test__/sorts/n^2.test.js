@@ -1,8 +1,8 @@
 import {insertSort, selectSort, shellSort} from "../../sorts/n^2";
-import {randInt, tempTest} from "./util";
+import {randInt, repareDatas, tempTest} from "./util";
 
 let datas = [[]];
-beforeAll(()=>{
+/*beforeAll(()=>{
   let n = 5;
   while(n-->0){
     let arr = [];
@@ -11,7 +11,8 @@ beforeAll(()=>{
     }
     datas.push(arr);
   }
-});
+});*/
+repareDatas(datas);
 
 describe('n^2',()=>{
   test('select',()=>{
