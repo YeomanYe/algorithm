@@ -6,13 +6,12 @@
  * @return {[type]}     [description]
  */
 export function quickSort(arr, i = 0, j = arr.length - 1) {
-  let refer = arr[j],
+  let pivot = arr[j],
       index = j,
       k = j;
-  let len = arr.length;
   if (i >= j) return;
   while (j > i) {
-    if (arr[--j] > refer) {
+    if (arr[--j] > pivot) {
       let tmp = arr[j];
       for (let i = j; i < index; i++) {
         arr[i] = arr[i + 1];
