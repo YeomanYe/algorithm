@@ -1,6 +1,6 @@
 import clonedeep from "lodash.clonedeep";
 
-export function tempTest(sort,datas) {
+export function tempSortTest(sort, datas) {
   let d = clonedeep(datas);
   for(let i=0,len=datas.length;i<len;i++){
     let arr = d[i];
@@ -14,7 +14,7 @@ export function tempTest(sort,datas) {
 }
 
 /**
- * 生成随机整型值
+ * 生成随机整型值,左闭有开
  * @param h
  * @param l
  * @returns {number}
@@ -26,7 +26,7 @@ export function randInt(h,l = 0){
 /**
  * 预备数据
  */
-export function repareDatas(datas) {
+export function repareArr(datas) {
   beforeAll(()=>{
     let n = 5;
     while(n-->0){
@@ -37,4 +37,36 @@ export function repareDatas(datas) {
       datas.push(arr);
     }
   });
+}
+
+/**
+ * 预备不重复的数组数据
+ * @param datas
+ */
+export function repareArrWithoutRepetition(datas) {
+  beforeAll(()=>{
+    let n = 5;
+    while(n-->0){
+      let set = new Set();
+      for(let len=Math.pow(10,n),i=0;i<len;i++){
+        set.add(randInt(len));
+      }
+      datas.push([...set]);
+    }
+  });
+}
+
+/**
+ * 排序测试模板
+ * @param search
+ * @param datas
+ */
+export function tempSearchTest(search,datas) {
+  datas.forEach((arr) => {
+    arr.sort((a,b) => a - b);
+    let i = randInt(arr.length);
+    let index = search(arr,arr[i]);
+    i = arr.length === 0 ? -1 : i;
+    expect(index).toEqual(i);
+  })
 }

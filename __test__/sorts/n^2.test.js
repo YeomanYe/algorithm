@@ -1,17 +1,17 @@
 import {insertSort, selectSort, shellSort} from "../../sorts/n^2";
-import {randInt, repareDatas, tempTest} from "../test.util";
+import {randInt, repareArr, tempSortTest} from "../test.util";
 
 let datas = [[]];
-repareDatas(datas);
+repareArr(datas);
 
 describe('n^2',()=>{
   test('selectSort',()=>{
-    tempTest(selectSort,datas);
+    tempSortTest(selectSort,datas);
   });
   test('insertSort',()=>{
-    tempTest(insertSort,datas);
+    tempSortTest(insertSort,datas);
   });
   test('shellSort',()=>{
-    tempTest(shellSort,datas);
+    tempSortTest(shellSort,datas);
   });
 });
