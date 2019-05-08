@@ -13,6 +13,7 @@
   "author": "FWHeart",
   "license": "ISC",
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
     "babel-jest": "^24.7.1",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "jest": "^24.7.1",

@@ -149,7 +149,7 @@ module.exports = {
   // testPathIgnorePatterns: [
   //   "\\\\node_modules\\\\"
   // ],
-  testPathDirs: [
+  roots: [
     "__test__"
   ],
   transformIgnorePatterns: ['node_modules'],

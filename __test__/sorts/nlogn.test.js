@@ -1,5 +1,5 @@
-import {repareDatas, tempTest} from "./util";
-import {mergeSort, quickSort} from "../../sorts/nlogn";
+import {repareDatas, tempTest} from "../test.util";
+import {heapSort, mergeSort, quickSort} from "../../sorts/nlogn";
 
 let datas = [[]];
 
@@ -11,5 +11,8 @@ describe('nlogn',()=>{
   });
   test('mergeSort',()=>{
     tempTest(mergeSort,datas);
+  });
+  test('heapSort',()=>{
+    tempTest(heapSort,datas);
   });
 });
