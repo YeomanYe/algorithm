@@ -43,7 +43,7 @@ export function repareArr(datas) {
  * 预备不重复的数组数据
  * @param datas
  */
-export function repareArrWithoutRepetition(datas) {
+export function repareUniqueArr(datas) {
   beforeAll(()=>{
     let n = 5;
     while(n-->0){
