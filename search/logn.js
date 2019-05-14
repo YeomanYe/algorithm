@@ -1,3 +1,10 @@
+/**
+ * 二分搜索
+ * @param arr
+ * @param val
+ * @returns {number}
+ */
+import SkipList from "../data structure/SkipList";
 
 export function bsearch(arr,val) {
   let index = -1;
@@ -10,4 +17,16 @@ export function bsearch(arr,val) {
     else index = m;
   }
   return index;
+}
+
+/**
+ * 跳表搜索
+ * @param arr
+ * @param val
+ * @returns {*}
+ */
+export function slsearch(arr,val) {
+  let sl = new SkipList(arr);
+  let node = sl.find(val);
+  return node && node.data;
 }

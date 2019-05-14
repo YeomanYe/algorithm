@@ -60,13 +60,19 @@ export function repareUniqueArr(datas) {
  * 排序测试模板
  * @param search
  * @param datas
+ * @param isVal 比较的是值还是序列号
  */
-export function tempSearchTest(search,datas) {
+export function tempSearchTest(search,datas,isVal = false) {
   datas.forEach((arr) => {
     arr.sort((a,b) => a - b);
     let i = randInt(arr.length);
     let index = search(arr,arr[i]);
-    i = arr.length === 0 ? -1 : i;
-    expect(index).toEqual(i);
+    if(isVal){
+      let val = arr.length === 0 ? null : arr[i];
+      expect(index).toEqual(val);
+    }else{
+      i = arr.length === 0 ? -1 : i;
+      expect(index).toEqual(i);
+    }
   })
 }

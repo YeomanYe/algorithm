@@ -14,7 +14,7 @@ export default class SkipList{
   }
   head = new Node();
   static randomLevel(){
-    let lv = 0;
+    let lv = 1;
     for(let i = 0;i<MAX_LEVEL;i++){
       if(Math.random()>0.5) lv += 1;
     }
