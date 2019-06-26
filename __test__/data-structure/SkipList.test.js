@@ -1,4 +1,4 @@
-import SkipList from "../../data structure/SkipList";
+import SkipList from "../../data-structure/SkipList";
 import cloneDeep from 'lodash.clonedeep';
 
 let datas = [5,0,2,4,3,6,1,7,9,8];

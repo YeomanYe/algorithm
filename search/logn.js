@@ -4,7 +4,7 @@
  * @param val
  * @returns {number}
  */
-import SkipList from "../data structure/SkipList";
+import SkipList from "../data-structure/SkipList";
 
 export function bsearch(arr,val) {
   let index = -1;

@@ -1,5 +1,5 @@
 import cloneDeep from 'lodash.clonedeep';
-import BinarySearchTree from "../../data structure/BinarySearchTree";
+import BinarySearchTree from "../../data-structure/BinarySearchTree";
 
 let datas = [5,0,2,4,3,6,1,7,9,8];
 describe('BinarySearchTree',()=>{

@@ -1,4 +1,4 @@
-class Node {
+export class Node {
   data;
   left = null;
   right = null;
@@ -11,8 +11,6 @@ class Node {
 export default class BinarySearchTree {
   root = null;
 
-  static Node = Node;
-
   constructor(arr){
     arr.forEach(d => {
       this.insert(d);
@@ -20,7 +18,7 @@ export default class BinarySearchTree {
   }
 
   insert(d){
-    let q = new BinarySearchTree.Node(d);
+    let q = new Node(d);
     if (!this.root) return this.root = q;
     let {last,cur} = this.findLastAndCur(d);
     if(cur) return;
