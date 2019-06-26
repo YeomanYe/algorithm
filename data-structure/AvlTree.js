@@ -68,4 +68,37 @@ export default class AvlTree extends BinarySearchTree{
   insert(d){
     this.root = this.insertNode(this.root,d);
   }
+  removeNode(node,d){
+    if(node !== null){
+      if(node.data < d){
+        node.right = this.removeNode(node.right,d);
+      }else if(node.data > d){
+        node.left = this.removeNode(node.left,d);
+      }else {
+        if(node.left && node.right){
+          //有两个子节点的情况
+          if(this.heightNode(node.left) > this.heightNode(node.right)){
+            let maxNode = node.left;
+            while(maxNode.right) maxNode = maxNode.right;
+            node.data = maxNode.data;
+            maxNode.data = d;
+            node.left = this.removeNode(node.left,d);
+          }else{
+            let minNode = node.right;
+            while(minNode.left) minNode = minNode.left;
+            node.data = minNode.data;
+            minNode.data = d;
+            node.right = this.removeNode(node.right,d);
+          }
+        }else{
+          //只有一个子节点的情况
+          node = node.left ? node.left : node.right;
+        }
+      }
+    }
+    return node;
+  }
+  remove(d){
+    this.root = this.removeNode(this.root,d);
+  }
 }

@@ -28,4 +28,20 @@ describe('AvlTree', () => {
     p = bst.find(10);
     expect(p).toEqual(null);
   });
+  test('remove',()=>{
+    let d = cloneDeep(datas);
+    let bst = new AvlTree(d);
+    bst.remove(0);
+    bst.remove(9);
+    bst.remove(5);
+    d.sort((a,b) => a - b);
+    d.splice(0,1);
+    d.splice(4,1);
+    d.splice(7,1);
+    let arr = [];
+    //中序遍历获得从小到大的排序
+    bst.inOrder(d => arr.push(d.data));
+    console.log('AvlTree remove inOrder',arr);
+    expect(arr).toEqual(d);
+  });
 });
