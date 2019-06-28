@@ -47,19 +47,19 @@ export default class AdjMatrixGraph {
   dft(func){
     let arr = this.adjMat,
         len = arr.length;
-    let filterObj = {}, filterIndexs = [];
+    let vIndex = [], sIndex = [];
     let search = (i) => {
       func(i);
-      for(let j=0;j<len;filterIndexs.push(i),j++){
-        if(!filterObj[i+'-'+j] && !filterObj[j+'-'+i] && arr[i][j]){
-          filterObj[i+'-'+j] = true;
+      vIndex.push(i);
+      for(let j=0;j<len;sIndex.push(i),j++){
+        if(arr[i][j] && vIndex.indexOf(j) < 0){
           search(j);
         }
       }
     };
-    for(let i = 0;i<len;filterIndexs.push(i),i++){
+    for(let i = 0;i<len;sIndex.push(i),i++){
       //为了避免重复搜索相同的节点
-      if(filterIndexs.indexOf(i)>=0)continue;
+      if(sIndex.indexOf(i)>=0)continue;
       search(i);
     }
   }
