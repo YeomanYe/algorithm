@@ -16,41 +16,39 @@ var wordBreak = function(s, wordDict) {
         };
     };
     let root = new TreeNode();
-    let wordSet = new Set();
     for(let w of wordDict) {
         let p = root;
         for(let i = 0;i < w.length;i++) {
             p = p.insert(w[i]);
-            // 用于字符是否在其中
-            wordSet.add(w[i]);
         }
         p.isEnd = true;
     }
     let temp = [];
-    let finish = false;
-    let backtrack = function (i) {
-        if(i === s.length) {
+    let dfs = function(i) {
+        if(i === 0) {
             ans.push(temp.join(' '));
             return;
         }
-        if(!wordSet.has(s[i])) {
-            finish = true;
-            return;
-        }
-        let p = root;
-        for(let j = i;j < s.length;j++) {
-            let e = p.get(s[j]);
-            if(e && e.isEnd) {
-                temp.push(s.substring(i, j + 1));
-                backtrack(j + 1);
-                if(finish) return;;
-                temp.pop();
-            } else if(!e) {
-                return;
-            }
-            p = e;
+        for(let d of dp[i]) {
+            temp.unshift(s.substring(d, i));
+            dfs(d);
+            temp.shift();
         }
     };
-    backtrack(0);
+    let n = s.length;
+    let dp = Array.from(new Array(n + 1), () => (new Array()));
+    dp[0][0] = 0;
+    for(let i = 0;i < n;i++) {
+        if(!dp[i].length) continue;
+        let j = i;
+        let p = root;
+        while(j < n && p) {
+            p = p.get(s[j++]);
+            if(p && p.isEnd) {
+                dp[j].push(i);
+            }
+        }
+    }
+    dfs(n);
     return ans;
 };
