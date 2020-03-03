@@ -5,17 +5,17 @@
  */
 var wordBreak = function(s, wordDict) {
     let ans = [];
-    let TreeNode = function() {
+    let Trie = function() {
         this.data = new Array(26);
         this.isEnd = false;
         this.insert = function (c) {
-            return this.data[c.charCodeAt(0) - 97] = this.data[c.charCodeAt(0) - 97] || new TreeNode();
+            return this.data[c.charCodeAt(0) - 97] = this.data[c.charCodeAt(0) - 97] || new Trie();
         };
         this.get = function (c) {
             return this.data[c.charCodeAt(0) - 97];
         };
     };
-    let root = new TreeNode();
+    let root = new Trie();
     for(let w of wordDict) {
         let p = root;
         for(let i = 0;i < w.length;i++) {
