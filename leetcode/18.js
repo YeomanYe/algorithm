@@ -40,3 +40,40 @@ var fourSum = function(nums, target) {
     }
     return ans;
 };
+
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[][]}
+ */
+var fourSum = function(nums, target) {
+    let len = nums.length;
+    let ans = [];
+    nums.sort((a,b) => a - b);
+    for(let i = 0;i < len - 3;i++) {
+        if(i > 0 && nums[i] === nums[i - 1]) continue;
+        let min = nums[i] + nums[i + 1] + nums[i + 2] + nums[i + 3];
+        // 最小值比最大值大，则结束
+        if(min > target) break;
+        for(let j = i + 1;j < len - 2; j++) {
+            if(j > i + 1 && nums[j] === nums[j - 1]) continue;
+            let l = j + 1;
+            let r = len - 1;
+            while(l < r) {
+                let d = nums[i] + nums[j] + nums[l] + nums[r];
+                if(d < target) {
+                    l++;
+                } else if(d > target) {
+                    r--;
+                } else {
+                    ans.push([nums[i], nums[j], nums[l], nums[r]]);
+                    while(l < r && nums[l] === nums[l + 1]) l++;
+                    l++;
+                    while(l < r && nums[r] === nums[r - 1]) r--;
+                    r--;
+                }
+            }
+        }
+    }
+    return ans;
+};
