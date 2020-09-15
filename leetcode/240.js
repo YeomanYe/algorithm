@@ -27,3 +27,27 @@ var searchMatrix = function(matrix, target) {
     }
     return false;
 };
+
+/**
+ * @param {number[][]} matrix
+ * @param {number} target
+ * @return {boolean}
+ */
+var searchMatrix = function(matrix, target) {
+    const searchRec = (left, up, right, down) => {
+        if (up > down || left > right) return false;
+        else if (matrix[up][left] > target || matrix[down][right] < target)
+            return false;
+        let mid = (left + right) >> 1;
+        let row = up;
+        while(row <= down && matrix[row][mid] <= target) {
+            if (matrix[row][mid] === target) {
+                return true;
+            }
+            row++;
+        }
+        return searchRec(mid + 1, up, right, row - 1) || searchRec(left, row, mid - 1, down);
+    };
+    if (!matrix.length) return false;
+    return searchRec(0, 0, matrix[0].length - 1, matrix.length - 1);
+};
